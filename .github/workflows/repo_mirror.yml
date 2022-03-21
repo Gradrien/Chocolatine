@@ -1,4 +1,4 @@
-name: Repo Mirroring
+name: Repo Mirror
 on: [push, delete]
 jobs:
   to_github:
