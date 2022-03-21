@@ -8,5 +8,5 @@ jobs:
         with:
           repository: actions/checkout
           fetch-depth: 0
-      - run: echo ${git branch --show-current}
+      - run: echo $(git branch --show-current)
       - run: du -skh --exclude=".git"
