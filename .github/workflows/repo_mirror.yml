@@ -13,17 +13,17 @@ jobs:
             git@github.com:EpitechPromo2026/B-DOP-200-BDX-2-1-bschocolatine-adrien.ricou.git
           ssh_private_key:
             ${{ secrets.CHOCOLATINE_SECRET }}
-  # to_codecommit:
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - uses: actions/checkout@v3
-  #       with:
-  #         fetch-depth: 0
-  #     - uses: pixta-dev/repository-mirroring-action@v1
-  #       with:
-  #         target_repo_url:
-  #           ssh://git-codecommit.<somewhere>.amazonaws.com/v1/repos/<target_repository_name>
-  #         ssh_private_key:
-  #           ${{ secrets.CHOCOLATINE_SECRET }}
-  #         ssh_username:
-  #           ${{ secrets.CODECOMMIT_SSH_PRIVATE_KEY_ID }}
+  to_codecommit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - uses: pixta-dev/repository-mirroring-action@v1
+        with:
+          target_repo_url:
+            git@github.com:EpitechPromo2026/B-DOP-200-BDX-2-1-bschocolatine-adrien.ricou.git
+          ssh_private_key:
+            ${{ secrets.CHOCOLATINE_SECRET }}
+          ssh_username:
+            ${{ secrets.CHOCOLATINE_SECRET_ID }}
