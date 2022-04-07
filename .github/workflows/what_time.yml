@@ -1,7 +1,0 @@
-name: chocolatine
-on: [push]
-jobs:
-  display-date:
-    runs-on: ubuntu-latest
-    steps:
-      - run: date
