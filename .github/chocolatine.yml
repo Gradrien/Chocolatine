@@ -6,14 +6,14 @@ env:
   branches-ignore:
       - 'ga-ignore-'
     jobs:
-      check_repository_cleanliness:
-        runs_on: ubuntu-latest
-        shell: bash
-        steps:
-          - id: check_repository_cleanliness
-          - run: useless_files=($(find . -name '*.o' -o -name '*.a' -o -name '#*#'))
-          - run: for (( i=0; i<${#useless_files[@]}; ++i)); do echo ${useless_files[$i]}
-                 done
+      # check_repository_cleanliness:
+      #   runs_on: ubuntu-latest
+      #   shell: bash
+      #   steps:
+      #     - id: check_repository_cleanliness
+      #     - run: useless_files=($(find . -name '*.o' -o -name '*.a' -o -name '#*#'))
+      #     - run: for (( i=0; i<${#useless_files[@]}; ++i)); do echo ${useless_files[$i]}
+      #            done
       to_github:
         #needs: previous_job // [previous_job, previous_job2]
         runs-on: ubuntu-latest
