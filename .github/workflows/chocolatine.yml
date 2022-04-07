@@ -1,11 +1,19 @@
 name: Chocolatine
 on: [push, pull_request]
-env:
-  MIRROR_URL: "https://github.com/EpitechPromo2026/B-DOP-200-BDX-2-1-chocolatine-adrien.ricou.git"
-  EXECUTABLES: "a.out"
+# env:
+#   MIRROR_URL: "https://github.com/EpitechPromo2026/B-DOP-200-BDX-2-1-chocolatine-adrien.ricou.git"
+#   EXECUTABLES: "a.out"
   branches-ignore:
       - 'ga-ignore-'
     jobs:
+      check_repository_cleanliness:
+        runs_on: ubuntu-latest
+        shell: bash
+        steps:
+          - id: check_repository_cleanliness
+          - run: useless_files=($(find . -name '*.o' -o -name '*.a' -o -name '#*#'))
+          - run: for (( i=0; i<${#useless_files[@]}; ++i)); do echo ${useless_files[$i]}
+                 done
       to_github:
         #needs: previous_job // [previous_job, previous_job2]
         runs-on: ubuntu-latest
