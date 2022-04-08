@@ -1,6 +1,3 @@
-env:
-  MIRROR_URL: "git@github.com:Gradrien/Chocolatine.git"
-  EXECUTABLES: "a.out"
 name: Chocolatine
 on:
   push:
@@ -9,6 +6,9 @@ on:
   pull_request:
     branches-ignore:
         - 'ga-ignore-'
+env:
+  MIRROR_URL: "git@github.com:Gradrien/Chocolatine.git"
+  EXECUTABLES: "a.out"
     jobs:
       check_repository_cleanliness:
         runs_on: ubuntu-latest
