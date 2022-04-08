@@ -16,6 +16,9 @@ jobs:
     runs_on: ubuntu-latest
     shell: bash
     steps:
+      - uses: actions/checkout@v3
+        with:
+        fetch-depth: 0
       - id: check_repository_cleanliness
       - run: |
           useless_files=($(find . -name '*.o' -o -name '*.a' -o \
