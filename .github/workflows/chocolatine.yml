@@ -11,27 +11,27 @@ on:
 env:
   MIRROR_URL: "git@github.com:Gradrien/Chocolatine.git"
   EXECUTABLES: "a.out"
-    jobs:
-      check_repository_cleanliness:
-        runs_on: ubuntu-latest
-        shell: bash
-        steps:
-          - id: check_repository_cleanliness
-          - run: |
-              useless_files=($(find . -name '*.o' -o -name '*.a' -o \
-              -name '*.so' -o -name '*gcno' -o -name '*.gcda' -o -name '#*#' \
-              -o -name '*~' -o -iname "*pain_au_chocolat*" -o -path *tmp/*))
-              for (( i=0; i<${#useless_files[@]}; ++i)); do echo "Unwanted file detected ${useless_files[$i]}"; done
-      to_github:
-        needs: check_repository_cleanliness
-        runs-on: ubuntu-latest
-        steps:
-          - uses: actions/checkout@v3
-            with:
-              fetch-depth: 0
-          - uses: pixta-dev/repository-mirroring-action@v1
-            with:
-              target_repo_url:
-                ${{ env.MIRROR_URL }}
-              ssh_private_key:
-                ${{ secrets.GIT_SSH_PRIVATE_KEY }}
+jobs:
+  check_repository_cleanliness:
+    runs_on: ubuntu-latest
+    shell: bash
+    steps:
+      - id: check_repository_cleanliness
+      - run: |
+          useless_files=($(find . -name '*.o' -o -name '*.a' -o \
+          -name '*.so' -o -name '*gcno' -o -name '*.gcda' -o -name '#*#' \
+          -o -name '*~' -o -iname "*pain_au_chocolat*" -o -path *tmp/*))
+          for (( i=0; i<${#useless_files[@]}; ++i)); do echo "Unwanted file detected ${useless_files[$i]}"; done
+  to_github:
+    needs: check_repository_cleanliness
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - uses: pixta-dev/repository-mirroring-action@v1
+        with:
+          target_repo_url:
+            ${{ env.MIRROR_URL }}
+          ssh_private_key:
+            ${{ secrets.GIT_SSH_PRIVATE_KEY }}
