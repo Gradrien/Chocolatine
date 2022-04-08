@@ -22,8 +22,8 @@ jobs:
           useless_files=($(find . -name '*.o' -o -name '*.a' -o \
           -name '*.so' -o -name '*gcno' -o -name '*.gcda' -o -name '#*#' \
           -o -name '*~' -o -iname "*pain_au_chocolat*" -o -path *tmp/*))
-          for files in $useless_files; do
-            echo "::error file=${files#./},title=Unwanted file detected::${files#./}"
+          for i in ${useless_files[@]}; do
+            echo "::error file=$i,title=Unwanted file detected::$i"
           done
           if [[ -n $useless_files ]]
           then
