@@ -1,11 +1,10 @@
+env:
+  MIRROR_URL: "git@github.com:Gradrien/Chocolatine.git"
+  EXECUTABLES: "a.out"
 name: Chocolatine
-on:
-  push:
-    branches-ignore:
-      - ga-ignore-
-  pull_request:
-    branches-ignore:
-      - ga-ignore-
+on: [push, pull_request]
+  branches-ignore:
+      - 'ga-ignore-'
     jobs:
       check_repository_cleanliness:
         runs_on: ubuntu-latest
@@ -26,7 +25,6 @@ on:
           - uses: pixta-dev/repository-mirroring-action@v1
             with:
               target_repo_url:
-                git@github.com:Gradrien/Chocolatine.git
-                # ${{ env.MIRROR_URL }}
+                ${{ env.MIRROR_URL }}
               ssh_private_key:
                 ${{ secrets.GIT_SSH_PRIVATE_KEY }}
