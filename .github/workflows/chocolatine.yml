@@ -6,7 +6,6 @@ on:
   pull_request:
     branches-ignore:
       - ga-ignore-
-
     jobs:
       check_repository_cleanliness:
         runs_on: ubuntu-latest
@@ -17,7 +16,6 @@ on:
                 -name '*.so' -o -name '*gcno' -o -name '*.gcda' -o -name '#*#' \
                 -o -name '*~' -o -iname "*pain_au_chocolat*" -o -path *tmp/*))
                 for (( i=0; i<${#useless_files[@]}; ++i)); do echo "Unwanted file detected ${useless_files[$i]}"; done
-
       to_github:
         needs: check_repository_cleanliness
         runs-on: ubuntu-latest
