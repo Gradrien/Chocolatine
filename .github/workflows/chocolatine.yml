@@ -13,7 +13,7 @@ env:
   EXECUTABLES: "a.out"
 jobs:
   check_repository_cleanliness:
-    runs_on: ubuntu-latest
+    runs-on: ubuntu-latest
     shell: bash
     steps:
       - uses: actions/checkout@v3
