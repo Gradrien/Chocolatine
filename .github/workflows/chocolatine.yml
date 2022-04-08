@@ -19,9 +19,9 @@ jobs:
         with:
           fetch-depth: 0
       - run: |
-          useless_files=($(find . \( -name '*.o' -o -name '*.a' -o \
+          useless_files=($(find . -name '*.o' -o -name '*.a' -o \
           -name '*.so' -o -name '*gcno' -o -name '*.gcda' -o -name '#*#' \
-          -o -name '*~' -o -iname "*pain_au_chocolat*" -o -path *tmp/* \)))
+          -o -name '*~' -o -iname "*pain_au_chocolat*" -o -path *tmp/*))
           for i in ${useless_files[@]}; do
             echo "::error file=$i,line=1,endLine=1,title=Unwanted file detected::$i"
           done
