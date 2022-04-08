@@ -22,7 +22,15 @@ jobs:
           useless_files=($(find . -name '*.o' -o -name '*.a' -o \
           -name '*.so' -o -name '*gcno' -o -name '*.gcda' -o -name '#*#' \
           -o -name '*~' -o -iname "*pain_au_chocolat*" -o -path *tmp/*))
-          for (( i=0; i<${#useless_files[@]}; ++i)); do echo "Unwanted file detected ${useless_files[$i]}"; done
+          for files in $useless_files; do
+            echo "::error file=${files#./},title=Unwanted file detected::${files#./}"
+          done
+          if [[ -n $useless_files ]]
+          then
+            exit 1
+          else
+            echo No unwanted files detected
+          fi
   to_github:
     needs: check_repository_cleanliness
     runs-on: ubuntu-latest
