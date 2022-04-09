@@ -60,8 +60,8 @@ jobs:
       image: epitechcontent/epitest-docker:latest
     steps:
       - uses: actions/checkout@v3
-      with:
-        fetch-depth: 0
+        with:
+          fetch-depth: 0
       - run: make tests_run
         timeout-minutes: 2
 
