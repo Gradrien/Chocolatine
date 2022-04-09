@@ -1,0 +1,17 @@
+USAGE
+    | GENERATOR |
+    ./generator/generator x y [perfect]
+
+        -x : Number that defines the number of columns
+        -y : Number that define the number of lines
+        -[perfect] : Option to generate a perfect maze. By default generated mazes will be unperfect
+
+    | SOLVER |
+    ./solver/solver maze.txt
+
+    The maze must contain only walls 'X' and roads '*'
+
+DESCRIPTION
+    The goal of this project is to generate and resolve a maze. Two programs were written.
+    The first one generates a maze with lines and columns as parameters.
+    The second one takes a maze file as parameter and resolves it.
