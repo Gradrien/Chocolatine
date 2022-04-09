@@ -45,7 +45,7 @@ jobs:
       - run: make
         timeout-minutes: 2
       - run: make clean
-        run: |
+      - run: |
           IFS=',' read -a ADDR <<< "$EXECUTABLES"
           for i in "${ADDR[@]}"; do
             if [[ ! -x "./${i}" ]]; then
