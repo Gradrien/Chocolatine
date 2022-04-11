@@ -46,7 +46,7 @@ jobs:
         timeout-minutes: 2
       - run: make clean
       - run: |
-          IFS=',' read -a ADDR <<< "$EXECUTABLES"
+          IFS=',' read -a ADDR <<< ${{ env.EXECUTABLES }}
           for i in "${ADDR[@]}"; do
             if [[ ! -x "./${i}" ]]; then
               exit 1
